@@ -40,7 +40,7 @@ class Fruit:
     
     def draw_fruit(self):
         fruit_rect = pygame.Rect(self.pos.x * cell_size,self.pos.y * cell_size,cell_size,cell_size)
-        pygame.draw.rect(screen,(126,166,114),fruit_rect)
+        screen.blit(apple,fruit_rect)
 
     def randomize(self):
         self.x = random.randint(0,cell_number -1)
@@ -79,11 +79,13 @@ class Main:
         pygame.quit()
         sys.exit()
 
+pygame.init()
 cell_size = 30
 cell_number = 20
 
 screen = pygame.display.set_mode((cell_number*cell_size,cell_number*cell_size))
 clock = pygame.time.Clock()
+apple = pygame.image.load("resources/apple.png").convert_alpha()
 
 
 
@@ -93,7 +95,6 @@ pygame.time.set_timer(SCREEN_UPDATE,100)
 main_game = Main()
 
 if __name__ == "__main__":
-    pygame.init()
 
     while True:
         for event in pygame.event.get():
